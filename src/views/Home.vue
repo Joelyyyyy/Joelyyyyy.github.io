@@ -1,41 +1,50 @@
 <template>
-  <div class="bg-gradient-to-br from-gray-900 to-black text-white">
+  <div class="bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white min-h-screen">
     <!-- Hero Section -->
     <section
       id="home"
       class="relative min-h-screen flex items-center justify-center px-4 overflow-hidden"
     >
-      <div class="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-black/80 z-10"></div>
+      <!-- Animated background gradient -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-blue-900/30 via-purple-900/30 to-pink-900/30 animate-gradient-x"
+      ></div>
+
+      <!-- Floating particles effect -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="particles"></div>
+      </div>
+
       <div class="max-w-7xl mx-auto text-center relative z-20 py-20">
         <div class="space-y-8">
           <div class="relative inline-block">
             <h1
               ref="heroTitle"
-              class="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 relative"
+              class="text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 relative"
             >
               Creative Developer
               <span
-                class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-purple-500"
+                class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"
               ></span>
             </h1>
           </div>
           <p
             ref="heroSubtitle"
-            class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
           >
             Transforming ideas into elegant digital experiences through innovative design and
             cutting-edge technology.
           </p>
-          <div ref="heroCTA" class="flex justify-center gap-4">
+          <div ref="heroCTA" class="flex justify-center gap-6">
             <a
               href="#projects"
-              class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-blue-500/50 cursor-pointer"
+              class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/25 cursor-pointer"
             >
               View Projects
             </a>
             <a
               href="#contact"
-              class="px-8 py-3 border border-white/20 hover:bg-white/10 rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1 shadow-lg cursor-pointer"
+              class="px-8 py-4 border border-white/20 hover:border-white/40 rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1 hover:bg-white/10 hover:shadow-xl cursor-pointer backdrop-blur-sm"
             >
               Contact Me
             </a>
@@ -48,13 +57,18 @@
     <section
       id="about"
       ref="aboutSection"
-      class="min-h-screen flex items-center justify-center px-4 py-20"
+      class="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden"
     >
-      <div class="max-w-7xl mx-auto">
-        <h2 ref="aboutTitle" class="text-4xl font-bold mb-16 text-center relative">
+      <!-- Background gradient -->
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent"
+      ></div>
+
+      <div class="max-w-7xl mx-auto relative z-10">
+        <h2 ref="aboutTitle" class="text-5xl font-bold mb-16 text-center relative">
           About Me
           <span
-            class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500"
+            class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"
           ></span>
         </h2>
         <div ref="aboutContent" class="grid md:grid-cols-2 gap-16 items-center">
@@ -229,6 +243,31 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Download Resume Card -->
+              <div class="md:col-span-2 flex justify-center py-2">
+                <a
+                  href="/resume.pdf"
+                  download
+                  class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/25"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  Download Resume
+                </a>
+              </div>
             </div>
           </div>
           <div ref="profileImage" class="relative group">
@@ -246,12 +285,21 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" ref="projectsSection" class="min-h-screen px-4 py-20">
-      <div class="max-w-7xl mx-auto">
-        <h2 ref="projectsTitle" class="text-4xl font-bold mb-16 text-center relative">
+    <section
+      id="projects"
+      ref="projectsSection"
+      class="min-h-screen px-4 py-20 relative overflow-hidden"
+    >
+      <!-- Background gradient -->
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/5 to-transparent"
+      ></div>
+
+      <div class="max-w-7xl mx-auto relative z-10">
+        <h2 ref="projectsTitle" class="text-5xl font-bold mb-16 text-center relative">
           Featured Projects
           <span
-            class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500"
+            class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"
           ></span>
         </h2>
         <div ref="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -259,23 +307,34 @@
             v-for="(project, index) in projects"
             :key="index"
             ref="projectCards"
-            class="group relative overflow-hidden rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-all duration-300"
+            class="group relative overflow-hidden rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2"
           >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            ></div>
             <div class="aspect-video overflow-hidden rounded-t-xl">
               <img
                 :src="project.image"
                 :alt="project.title"
-                class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+                class="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
               />
             </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2 text-blue-400">{{ project.title }}</h3>
-              <p class="text-gray-400 mb-4">{{ project.description }}</p>
+            <div class="p-6 relative z-10">
+              <h3
+                class="text-xl font-semibold mb-2 text-blue-400 group-hover:text-blue-300 transition-colors duration-300"
+              >
+                {{ project.title }}
+              </h3>
+              <p
+                class="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors duration-300"
+              >
+                {{ project.description }}
+              </p>
               <div class="flex flex-wrap gap-2">
                 <span
                   v-for="(tech, techIndex) in project.technologies"
                   :key="techIndex"
-                  class="px-3 py-1 text-sm bg-white/10 text-gray-300 rounded-full"
+                  class="px-3 py-1 text-sm bg-white/10 text-gray-300 rounded-full backdrop-blur-sm group-hover:bg-white/20 group-hover:text-white transition-all duration-300"
                 >
                   {{ tech }}
                 </span>
@@ -290,53 +349,65 @@
     <section
       id="contact"
       ref="contactSection"
-      class="min-h-screen flex items-center justify-center px-4 py-20"
+      class="min-h-screen flex items-center justify-center px-4 py-20 relative"
     >
-      <div class="max-w-3xl mx-auto w-full">
-        <h2 ref="contactTitle" class="text-4xl font-bold mb-16 text-center relative">
+      <!-- Background gradient -->
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-transparent via-purple-900/10 to-transparent"
+      ></div>
+
+      <div
+        class="max-w-3xl mx-auto w-full backdrop-blur-lg bg-white/5 p-8 rounded-2xl border border-white/10"
+      >
+        <h2 ref="contactTitle" class="text-5xl font-bold mb-16 text-center relative">
           Get In Touch
           <span
-            class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500"
+            class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"
           ></span>
         </h2>
         <form ref="contactForm" class="space-y-8" @submit.prevent="handleSubmit">
           <div>
-            <label class="block text-sm font-medium mb-2 text-gray-400">Name</label>
+            <label class="block text-sm font-medium mb-2 text-gray-300">Name</label>
             <input
               v-model="formData.name"
               type="text"
               required
-              class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+              class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
             />
           </div>
           <div>
-            <label class="block text-sm font-medium mb-2 text-gray-400">Email</label>
+            <label class="block text-sm font-medium mb-2 text-gray-300">Email</label>
             <input
               v-model="formData.email"
               type="email"
               required
-              class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+              class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
             />
           </div>
           <div>
-            <label class="block text-sm font-medium mb-2 text-gray-400">Message</label>
+            <label class="block text-sm font-medium mb-2 text-gray-300">Message</label>
             <textarea
               v-model="formData.message"
               rows="4"
               required
-              class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+              class="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
             ></textarea>
           </div>
           <div
             v-if="submitStatus"
-            :class="['text-center mb-4', submitStatus.success ? 'text-green-500' : 'text-red-500']"
+            :class="[
+              'text-center mb-4 p-4 rounded-lg backdrop-blur-sm',
+              submitStatus.success
+                ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+                : 'bg-red-500/10 text-red-400 border border-red-500/20',
+            ]"
           >
             {{ submitStatus.message }}
           </div>
           <button
             type="submit"
             :disabled="isSubmitting"
-            class="w-full px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-blue-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+            class="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {{ isSubmitting ? 'Sending...' : 'Send Message' }}
           </button>
@@ -379,22 +450,28 @@ const contactForm = ref<HTMLElement | null>(null)
 
 const projects = [
   {
-    title: 'Project One',
-    description: 'An innovative web application that solves real-world problems.',
-    image: '../assets/project1.jpg',
-    technologies: ['Vue.js', 'Tailwind', 'Node.js'],
+    title: 'Modern E-commerce Platform',
+    description:
+      'A full-featured online shopping platform with real-time inventory management and secure payment processing.',
+    image:
+      'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&q=80&w=1470',
+    technologies: ['Vue.js', 'Tailwind', 'Node.js', 'MongoDB'],
   },
   {
-    title: 'Project Two',
-    description: 'A dynamic platform enhancing user interaction and experience.',
-    image: '../assets/project2.jpg',
-    technologies: ['React', 'GraphQL', 'AWS'],
+    title: 'AI-Powered Analytics Dashboard',
+    description:
+      'Interactive data visualization platform featuring machine learning insights and predictive analytics.',
+    image:
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1470',
+    technologies: ['React', 'D3.js', 'Python', 'TensorFlow'],
   },
   {
-    title: 'Project Three',
-    description: 'A cutting-edge solution leveraging modern web technologies.',
-    image: '../assets/project3.jpg',
-    technologies: ['Next.js', 'TypeScript', 'Firebase'],
+    title: 'Social Media Management Suite',
+    description:
+      'Comprehensive tool for managing multiple social media accounts with scheduling and analytics capabilities.',
+    image:
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1415',
+    technologies: ['Next.js', 'TypeScript', 'GraphQL', 'AWS'],
   },
 ]
 
@@ -528,19 +605,62 @@ onMounted(() => {
   })
 
   // Project cards animation
-  projectCards.value.forEach((card, index) => {
+  projectCards.value.forEach((card) => {
     gsap.from(card, {
       scrollTrigger: {
         trigger: card,
-        start: 'top 80%',
-        toggleActions: 'play none none reverse',
+        start: 'top bottom-=100',
+        end: 'top center+=100',
+        scrub: 0.5,
+        toggleActions: 'play reverse play reverse',
       },
       opacity: 0,
-      scale: 0.9,
-      duration: 1,
-      delay: index * 0.2,
-      ease: 'power3.out',
+      scale: 0.95,
+      y: 50,
+      rotateX: -5,
+      transformOrigin: '50% 50%',
+      duration: 0.6,
+      ease: 'power1.out',
     })
   })
 })
 </script>
+
+<style scoped>
+.animate-gradient-x {
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: particleMove 60s linear infinite;
+}
+
+@keyframes particleMove {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+</style>
