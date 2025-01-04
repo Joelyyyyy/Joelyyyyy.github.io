@@ -182,7 +182,7 @@
                           d="M40.2 101.1c-.4 0-.5-.2-.3-.5l2.1-2.7c.2-.3.7-.5 1.1-.5h35.7c.4 0 .5.3.3.6l-1.7 2.6c-.2.3-.7.6-1 .6l-36.2-.1zM25.1 110.3c-.4 0-.5-.2-.3-.5l2.1-2.7c.2-.3.7-.5 1.1-.5h45.6c.4 0 .6.3.5.6l-.8 2.4c-.1.4-.5.6-.9.6l-47.3.1zM49.3 119.5c-.4 0-.5-.3-.3-.6l1.4-2.5c.2-.3.6-.6 1-.6h20c.4 0 .6.3.6.7l-.2 2.4c0 .4-.4.7-.7.7l-21.8-.1z"
                         />
                         <path
-                          d="M52.8 107.8c-6.3 1.6-10.6 2.8-16.8 4.4-1.5.4-1.6.5-2.9-1-1.5-1.7-2.6-2.8-4.7-3.8-6.3-3.1-12.4-2.2-18.1 1.5-6.8 4.4-10.3 10.9-10.2 19 .1 8 5.6 14.6 13.5 15.7 6.8.9 12.5-1.5 17-6.6.9-1.1 1.7-2.3 2.7-3.7h-19.3c-2.1 0-2.6-1.3-1.9-3 1.3-3.1 3.7-8.3 5.1-10.9.3-.6 1-1.6 2.5-1.6h36.4c-.2 2.7-.2 5.4-.6 8.1-1.1 7.2-3.8 13.8-8.2 19.6-7.2 9.5-16.6 15.4-28.5 17-9.8 1.3-18.9-.6-26.9-6.6-7.4-5.6-11.6-13-12.7-22.2-1.3-10.9 1.9-20.7 8.5-29.3 7.1-9.3 16.5-15.2 28-17.3 9.4-1.7 18.4-.6 26.5 4.9 5.3 3.5 9.1 8.3 11.6 14.1.6.9.2 1.4-1 1.7z"
+                          d="M52.8 107.8c-6.3 1.6-10.6 2.8-16.8 4.4-1.5.4-1.6.5-2.9-1-1.5-1.7-2.6-2.8-4.7-3.8-6.3-3.1-12.4-2.2-18.1 1.5-6.8 4.4-10.3 10.9-10.2 19 .1 8 5.6 14.6 13.5 15.7 6.8.9 12.5-1.5 17-6.6.9-1.1 1.7-2.3 2.7-3.7h-19.3c-2.1 0-2.6-1.3-1.9-3 1.3-3.1 3.7-8.3 5.1-10.9.3-.6 1-1.6 2.5-1.6h36.4c-.2 2.7-.2 5.4-.6 8.1-1.1 7.2-3.8 13.8-8.2 19.6-7.2 9.5-16.6 15.4-28.5 17-9.8 1.3-18.9-.6-26.9-6.6-7.4-5.6-11.6-13-12.7-22.2-1.3-10.9 1.9-20.7 8.5-29.3 7.1-9.3 16.5-15.2 28-17.3 9.4-1.7 18.4-.6 26.5 4.9 5.3 3.5 9.1 8.3 11.6 14.1.6.9.2 1.4-1 1.7zM64 92.8c-15.9 0-28.8-12.9-28.8-28.8S48.1 35.2 64 35.2s28.8 12.9 28.8 28.8S79.9 92.8 64 92.8z"
                         />
                         <path
                           d="M113.3 108.1c-6.3-1.6-10.6-2.8-16.8-4.4-1.5-.4-1.6-.5-2.9 1-1.5 1.7-2.6 2.8-4.7 3.8-6.3 3.1-12.4 2.2-18.1-1.5-6.8-4.4-10.3-10.9-10.2-19 .1-8 5.6-14.6 13.5-15.7 6.8-.9 12.5 1.5 17 6.6.9 1.1 1.7 2.3 2.7 3.7h-19.3c-2.1 0-2.6 1.3-1.9 3 1.3 3.1 3.7 8.3 5.1 10.9.3.6 1 1.6 2.5 1.6h36.4c-.2-2.7-.2-5.4-.6-8.1-1.1-7.2-3.8-13.8-8.2-19.6-7.2-9.5-16.6-15.4-28.5-17-9.8-1.3-18.9.6-26.9 6.6-7.4 5.6-11.6 13-12.7 22.2-1.3 10.9 1.9 20.7 8.5 29.3 7.1 9.3 16.5 15.2 28 17.3 9.4 1.7 18.4.6 26.5-4.9 5.3-3.5 9.1-8.3 11.6-14.1.6-.9.2-1.4-1-1.7z"
@@ -354,6 +354,7 @@ defineOptions({
 import { onMounted, ref, reactive } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import emailjs from '@emailjs/browser'
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
@@ -416,27 +417,30 @@ const handleSubmit = async () => {
   submitStatus.value = null
 
   try {
-    const response = await fetch('http://localhost:8081/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await emailjs.send(
+      'service_joelyyy', // Replace with your EmailJS service ID
+      'template_sucw2zq', // Replace with your EmailJS template ID
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
       },
-      body: JSON.stringify(formData),
-    })
+      'UmWZjxSq8VSpPQiSX', // Replace with your EmailJS public key
+    )
 
-    if (!response.ok) {
+    if (response.status === 200) {
+      submitStatus.value = {
+        success: true,
+        message: 'Message sent successfully! Thank you for reaching out.',
+      }
+
+      // Reset form
+      formData.name = ''
+      formData.email = ''
+      formData.message = ''
+    } else {
       throw new Error('Failed to send message')
     }
-
-    submitStatus.value = {
-      success: true,
-      message: 'Message sent successfully! Thank you for reaching out.',
-    }
-
-    // Reset form
-    formData.name = ''
-    formData.email = ''
-    formData.message = ''
   } catch (err: unknown) {
     console.error('Error sending message:', err)
     submitStatus.value = {
@@ -448,7 +452,10 @@ const handleSubmit = async () => {
   }
 }
 
+// Initialize EmailJS
 onMounted(() => {
+  emailjs.init('UmWZjxSq8VSpPQiSX') // Updated with your actual public key
+
   // Hero Section Animations
   const heroTimeline = gsap.timeline()
   heroTimeline
