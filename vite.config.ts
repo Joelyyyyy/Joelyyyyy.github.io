@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './',
+  base: '',
   plugins: [vue()],
   resolve: {
     alias: {
@@ -15,7 +15,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        assetFileNames: 'assets/[name].[ext]',
+        assetFileNames: (assetInfo) => {
+          return `assets/${assetInfo.name}`
+        },
         chunkFileNames: 'assets/[name].js',
         entryFileNames: 'assets/[name].js',
       },
