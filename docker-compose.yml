@@ -9,6 +9,8 @@ services:
       - '82:80'
     depends_on:
       - backend
+    volumes:
+      - ./public/resume.pdf:/usr/share/nginx/html/resume.pdf
 
   backend:
     build:
